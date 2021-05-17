@@ -14,62 +14,25 @@ export default function Slides() {
     load();
   }, []);
 
-  const cardBackground = (poketipo) => {
-    console.log(poketipo);
-    if (poketipo === "normal") {
-      return "#CACAC1";
-    }
-    if (poketipo === "poison") {
-      return "#A95CA0";
-    }
-    if (poketipo === "psychic") {
-      return "#F763B2";
-    }
-    if (poketipo === "grass") {
-      return "#8CD851";
-    }
-    if (poketipo === "ground") {
-      return "#EDCB56";
-    }
-    if (poketipo === "ice") {
-      return "#96F2FF";
-    }
-    if (poketipo === "fire") {
-      return "#FA5643";
-    }
-    if (poketipo === "rock") {
-      return "#CDBC72";
-    }
-    if (poketipo === "dragon") {
-      return "#8774FF";
-    }
-    if (poketipo === "water") {
-      return "#56ADFF";
-    }
-    if (poketipo === "bug") {
-      return "#BECE1E";
-    }
-    if (poketipo === "dark") {
-      return "#000";
-    }
-    if (poketipo === "fighting") {
-      return "#A95643";
-    }
-    if (poketipo === "ghost") {
-      return "#7773D4";
-    }
-    if (poketipo === "steel") {
-      return "#C2C0D9";
-    }
-    if (poketipo === "flying") {
-      return "#78A3FF";
-    }
-    if (poketipo === "electric") {
-      return "#FDE23A";
-    }
-    if (poketipo === "fairy") {
-      return "#F9ADFF";
-    }
+  const pokeColor = {
+    normal: "#CACAC1",
+    poison: "#A95CA0",
+    psychic: "#F763B2",
+    grass: "#8CD851",
+    ground: "#EDCB56",
+    ice: "#96F2FF",
+    fire: "#FA5643",
+    rock: "#CDBC72",
+    dragon: "#8774FF",
+    water: "#56ADFF",
+    bug: "#BECE1E",
+    dark: "#000",
+    fighting: "#A95643",
+    ghost: "#7773D4",
+    steel: "#C2C0D9",
+    flying: "#78A3FF",
+    electric: "#FDE23A",
+    fairy: "#F9ADFF",
   };
 
   const prevSlide = () => {
@@ -110,7 +73,7 @@ export default function Slides() {
                   <div
                     className={styles.cardBackground}
                     style={{
-                      background: cardBackground(item.tipo),
+                      background: pokeColor[item.tipo],
                     }}
                   ></div>
                 </div>
