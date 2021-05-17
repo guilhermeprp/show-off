@@ -4,7 +4,6 @@ import model from "../pages/api/model";
 
 export default function Slides() {
   const [pokemonSpritesList, setPokemonSpritesList] = useState([]);
-  const [scrollX, setScrollX] = useState(0);
 
   useEffect(() => {
     const load = async () => {
@@ -15,36 +14,79 @@ export default function Slides() {
     load();
   }, []);
 
-  const cardBackground = () => {
-    var randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    return randomColor;
+  const cardBackground = (poketipo) => {
+    console.log(poketipo);
+    if (poketipo === "normal") {
+      return "#CACAC1";
+    }
+    if (poketipo === "poison") {
+      return "#A95CA0";
+    }
+    if (poketipo === "psychic") {
+      return "#F763B2";
+    }
+    if (poketipo === "grass") {
+      return "#8CD851";
+    }
+    if (poketipo === "ground") {
+      return "#EDCB56";
+    }
+    if (poketipo === "ice") {
+      return "#96F2FF";
+    }
+    if (poketipo === "fire") {
+      return "#FA5643";
+    }
+    if (poketipo === "rock") {
+      return "#CDBC72";
+    }
+    if (poketipo === "dragon") {
+      return "#8774FF";
+    }
+    if (poketipo === "water") {
+      return "#56ADFF";
+    }
+    if (poketipo === "bug") {
+      return "#BECE1E";
+    }
+    if (poketipo === "dark") {
+      return "#000";
+    }
+    if (poketipo === "fighting") {
+      return "#A95643";
+    }
+    if (poketipo === "ghost") {
+      return "#7773D4";
+    }
+    if (poketipo === "steel") {
+      return "#C2C0D9";
+    }
+    if (poketipo === "flying") {
+      return "#78A3FF";
+    }
+    if (poketipo === "electric") {
+      return "#FDE23A";
+    }
+    if (poketipo === "fairy") {
+      return "#F9ADFF";
+    }
   };
 
   const prevSlide = () => {
-    let x = scrollX + Math.round(window.innerWidth / 2);
-    if (x > 0) {
-      x = 0;
-    }
-    setScrollX(x);
+    document.querySelector("#card-row").scrollBy(-1200, 0);
   };
 
   const nextSlide = () => {
-    let x = scrollX - Math.round(window.innerWidth / 2);
-    let listW = pokemonSpritesList.length * 300;
-    if (window.innerWidth - listW > x) {
-      x = window.innerWidth - listW - 60;
-    }
-    setScrollX(x);
+    document.querySelector("#card-row").scrollBy(1200, 0);
   };
 
   return (
     <div className="background">
       <div className={styles.rowWrapper}>
-        <div className={styles.cardRow}>
+        <div id="card-row" className={styles.cardRow}>
           <div
             className={styles.cardWrapper}
             style={{
-              marginLeft: scrollX,
               width: pokemonSpritesList.length * 300,
             }}
           >
@@ -56,14 +98,19 @@ export default function Slides() {
               .map((item, key) => (
                 <div key={key} className={styles.cards}>
                   <h1>{item.name.toUpperCase()}</h1>
-                  <img class={styles.pokemonBG} src={item.imgUrl} />
+                  <img class={styles.pokemonBG} src="/card_bg.png" />
                   <div class={styles.pokemonBox}>
                     <img class={styles.pokemonImg} src={item.imgUrl} />
+                  </div>
+                  <div className={styles.description}>
+                    <p>{item.tipo.toUpperCase()}</p>
+                    <p>Lorem ipsu</p>
+                    <p>Lorem ipsu</p>
                   </div>
                   <div
                     className={styles.cardBackground}
                     style={{
-                      background: "#" + cardBackground(),
+                      background: cardBackground(item.tipo),
                     }}
                   ></div>
                 </div>
