@@ -73,15 +73,16 @@
   font-family: "Press Start 2P", cursive;
   color: #00ff72;
   &:hover {
+    cursor: pointer;
     height: 400px;
     z-index: 5;
     transition-delay: 0.5s;
     transform: scale(1.1);
   }
   &:hover .pokemonImg {
-    transition-delay: 0.5s;
+    transition: 0.5s;
     z-index: 10;
-    transform: translate3d(0px, 0px, 23px) scale(1.1) rotateZ(10deg);
+    animation: shake 0.3s ease 0.5s forwards;
     transform-style: preserve-3d;
   }
 
@@ -92,6 +93,7 @@
 
   h1 {
     font-size: 1.5rem;
+    text-shadow: 2px 2px 0px black;
   }
 }
 
@@ -119,6 +121,11 @@
 .pokemonImg {
   width: 200px;
   transition: 0.3s;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.classeNova{
+  
 }
 
 .cardBackground {
@@ -129,6 +136,11 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.description p {
+  text-shadow: 2px 2px 0px black;
+  margin: 10px 0;
 }
 
 @media screen and (min-width: 426px) {
@@ -167,5 +179,15 @@
     > span {
       transition: 0.3s;
     }
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(10deg) scale(1.2);
+    filter: drop-shadow(6px 10px 0px rgba(0, 0, 0, 0.4));
   }
 }
