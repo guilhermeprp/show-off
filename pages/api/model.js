@@ -6,7 +6,7 @@ const basicFecth = async (endpoint) => {
 
 export default {
   getSpritesList: async () => {
-    const resultado = await basicFecth(`/pokemon?limit=100&offset=200`);
+    const resultado = await basicFecth(`/pokemon?limit=200&offset=0`);
 
     const teste = await Promise.all(
       resultado.results.map(async (pokemon) => {
@@ -15,6 +15,7 @@ export default {
     );
 
     const sprites = teste.map((a) => ({
+      id: a.id,
       imgUrl: a.sprites.other["official-artwork"].front_default,
       name: a.name,
       tipo: a.types[0].type.name,
