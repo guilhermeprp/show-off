@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Slides.module.scss";
-import model from "../pages/api/model";
+import model from "../../pages/api/model";
 
 export default function Slides() {
   const [pokemonSpritesList, setPokemonSpritesList] = useState([]);
