@@ -4,16 +4,6 @@ import model from "../pages/api/model";
 
 export default function Slides() {
   const [pokemonSpritesList, setPokemonSpritesList] = useState([]);
-
-  useEffect(() => {
-    const load = async () => {
-      let pokedexImgs = await model.getSpritesList();
-      setPokemonSpritesList(pokedexImgs);
-    };
-
-    load();
-  }, []);
-
   const pokeColor = {
     normal: "#CACAC1",
     poison: "#A95CA0",
@@ -35,12 +25,27 @@ export default function Slides() {
     fairy: "#F9ADFF",
   };
 
+  useEffect(() => {
+    const load = async () => {
+      let pokedexImgs = await model.getSpritesList();
+      setPokemonSpritesList(pokedexImgs);
+    };
+
+    load();
+  }, []);
+
+  console.log(pokemonSpritesList);
+
   const prevSlide = () => {
     document.querySelector("#card-row").scrollBy(-1200, 0);
   };
 
   const nextSlide = () => {
     document.querySelector("#card-row").scrollBy(1200, 0);
+  };
+
+  const openHandle = (evento) => {
+    console.log(evento.target.className);
   };
 
   return (
@@ -59,16 +64,33 @@ export default function Slides() {
             {pokemonSpritesList
               .sort((a, b) => (a.name > b.name ? 1 : -1))
               .map((item, key) => (
-                <div key={key} className={styles.cards}>
+                <div key={key} className={styles.cards} onClick={openHandle}>
                   <h1>{item.name.toUpperCase()}</h1>
-                  <img class={styles.pokemonBG} src="/card_bg.png" />
-                  <div class={styles.pokemonBox}>
-                    <img class={styles.pokemonImg} src={item.imgUrl} />
+                  <img className={styles.pokemonBG} src="/card_bg.png" />
+                  <div className={styles.pokemonBox}>
+                    <img className={styles.pokemonImg} src={item.imgUrl} />
                   </div>
                   <div className={styles.description}>
-                    <p>{item.tipo.toUpperCase()}</p>
-                    <p>Lorem ipsu</p>
-                    <p>Lorem ipsu</p>
+                    <p
+                      style={{
+                        color:
+                          pokeColor[item.tipo] === "#000"
+                            ? "#f9f9f9"
+                            : pokeColor[item.tipo],
+                      }}
+                    >
+                      TYPE: {item.tipo.toUpperCase()}
+                    </p>
+                    <p
+                      style={{
+                        color:
+                          pokeColor[item.tipo] === "#000"
+                            ? "#f9f9f9"
+                            : pokeColor[item.tipo],
+                      }}
+                    >
+                      SKILL: {item.skill1.toUpperCase()}
+                    </p>
                   </div>
                   <div
                     className={styles.cardBackground}

@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styles from "../styles/Navbar.module.scss";
 
 export default function NavBar() {
@@ -12,13 +13,13 @@ export default function NavBar() {
         <div className={styles.menu}>
           <ul className={styles.menuList}>
             <li>
-              <a href="#">Slides</a>
+              <Link href="/">Slides</Link>
             </li>
             <li>
-              <a href="#">Sort</a>
+              <Link href="/crud">Crud</Link>
             </li>
             <li>
-              <a href="#">Api</a>
+              <Link href="/search">Search</Link>
             </li>
           </ul>
         </div>

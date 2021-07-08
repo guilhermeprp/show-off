@@ -18,6 +18,7 @@ export default {
       imgUrl: a.sprites.other["official-artwork"].front_default,
       name: a.name,
       tipo: a.types[0].type.name,
+      skill1: a.abilities[0].ability.name,
     }));
 
     return sprites;
