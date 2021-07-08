@@ -16,9 +16,6 @@ export default function NavBar() {
               <Link href="/">Slides</Link>
             </li>
             <li>
-              <Link href="/crud">Crud</Link>
-            </li>
-            <li>
               <Link href="/search">Search</Link>
             </li>
           </ul>

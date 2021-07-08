@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Slides.module.scss";
-import model from "../pages/api/model";
+import model from "../../pages/api/model";
 
 export default function Slides() {
   const [pokemonSpritesList, setPokemonSpritesList] = useState([]);
@@ -34,18 +34,12 @@ export default function Slides() {
     load();
   }, []);
 
-  console.log(pokemonSpritesList);
-
   const prevSlide = () => {
     document.querySelector("#card-row").scrollBy(-1200, 0);
   };
 
   const nextSlide = () => {
     document.querySelector("#card-row").scrollBy(1200, 0);
-  };
-
-  const openHandle = (evento) => {
-    console.log(evento.target.className);
   };
 
   return (
@@ -63,8 +57,9 @@ export default function Slides() {
             </div>
             {pokemonSpritesList
               .sort((a, b) => (a.name > b.name ? 1 : -1))
+              .sort((a, b) => (a.id > b.id ? 1 : -1))
               .map((item, key) => (
-                <div key={key} className={styles.cards} onClick={openHandle}>
+                <div key={key} className={styles.cards}>
                   <h1>{item.name.toUpperCase()}</h1>
                   <img className={styles.pokemonBG} src="/card_bg.png" />
                   <div className={styles.pokemonBox}>
