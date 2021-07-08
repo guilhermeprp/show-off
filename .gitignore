@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+./package-lock.json
 /.pnp
 .pnp.js
 
@@ -33,5 +34,4 @@ yarn-error.log*
 # vercel
 .vercel
 
-package-lock.json
-node_modules
+
