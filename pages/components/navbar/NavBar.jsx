@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "../styles/Navbar.module.scss";
+import styles from "./Navbar.module.scss";
 
 export default function NavBar() {
   return (

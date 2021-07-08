@@ -1,6 +1,6 @@
 import Head from "next/head";
 import styles from "../../styles/Home.module.scss";
-import NavBar from "../../src/components/NavBar";
+import NavBar from "../components/navbar/NavBar.jsx";
 
 export default function Search() {
   return (

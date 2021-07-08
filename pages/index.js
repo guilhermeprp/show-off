@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.scss";
-import NavBar from "../components/NavBar";
-import Slides from "../components/Slides";
+import NavBar from "./components/navbar/NavBar.jsx";
+import Slides from "./components/slides/Slides.jsx";
 
 export default function Home() {
   return (
